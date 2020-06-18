@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import ProjetoBase from './components/ProjetoBase/ProjetoBase';
+import Salary from './components/Salary/Salary';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      salary: 0,
+    };
+  }
+  handleSalary = (valueSalary) => {};
   render() {
-    return <ProjetoBase />;
+    return (
+      <div>
+        <h1>Folha de Pagamento - Trabalho prático</h1>
+        <br />
+        <Salary onChangeFilter={this.handleSalary} />
+      </div>
+    );
   }
 }
