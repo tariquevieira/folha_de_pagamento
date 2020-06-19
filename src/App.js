@@ -10,21 +10,23 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      fullSalary: 0.0,
-      baseINSS: 0.0,
-      discountINSS: 0.0,
-      baseIRPF: 0.0,
-      discountIRPF: 0.0,
-      netSalary: 0.0,
-      bar1: 0.0,
-      bar2: 0.0,
-      bar3: 100.0,
-      percIRPF: 0.0,
-      percINSS: 0.0,
+      fullSalary: 0,
+      baseINSS: 0,
+      discountINSS: 0,
+      baseIRPF: 0,
+      discountIRPF: 0,
+      netSalary: 0,
+      bar1: 0,
+      bar2: 0,
+      bar3: 100,
+      percIRPF: 0,
+      percINSS: 0,
+      percNetSalary: 0,
     };
   }
   percentBars = (a, b) => {
     const value = Math.trunc((a / b) * 100);
+
     return value;
   };
   percentNumbers = (a, b) => {
@@ -67,6 +69,7 @@ export default class App extends Component {
 
     const percINSS = this.percentNumbers(discountINSS, fullSalary);
     const percIRPF = this.percentNumbers(discountIRPF, fullSalary);
+    const percNetSalary = this.percentNumbers(netSalary, fullSalary);
     this.setState({
       fullSalary: fullSalary,
       baseINSS,
@@ -79,6 +82,7 @@ export default class App extends Component {
       bar3,
       percINSS,
       percIRPF,
+      percNetSalary,
     });
   };
 
@@ -94,26 +98,39 @@ export default class App extends Component {
       bar3,
       percINSS,
       percIRPF,
+      percNetSalary,
     } = this.state;
     return (
-      <div>
+      <div className="container">
         <h1>Folha de Pagamento - Trabalho prático</h1>
+
         <br />
         <Salary onChangeSalary={this.handleSalary} />
         <br />
-        <Inss
-          inssFull={baseINSS}
-          percINSSP={percINSS}
-          discountINSSP={discountINSS}
-        />
-        <br />
-        <IRPF
-          baseIRPFP={baseIRPF}
-          percIRPFP={percIRPF}
-          discountIRPFP={discountIRPF}
-        />
-        <br />
-        <NetSalary netSalaryP={netSalary} />
+        <div class="row">
+          <div class="col s12 m5">
+            <div class="card-panel green darken-3">
+              <span class="white-text">
+                <Inss
+                  inssFull={baseINSS}
+                  percINSSP={percINSS}
+                  discountINSSP={discountINSS}
+                />
+                <br />
+                <IRPF
+                  baseIRPFP={baseIRPF}
+                  percIRPFP={percIRPF}
+                  discountIRPFP={discountIRPF}
+                />
+                <br />
+                <NetSalary
+                  netSalaryP={netSalary}
+                  percNetSalaryP={percNetSalary}
+                />
+              </span>
+            </div>
+          </div>
+        </div>
         <br />
         <div
           style={{

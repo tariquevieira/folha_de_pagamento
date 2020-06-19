@@ -9,12 +9,12 @@ export default class IRPF extends Component {
       <div>
         <div>
           <span>Base IRPF: </span>
-          <span>R${baseIRPFP}</span>
+          <span>R${baseIRPFP.toFixed(2)}</span>
         </div>
         <div>
           <span>Desconto: </span>
           <span>
-            R${discountIRPFP} ( {percIRPFP}%)
+            R${discountIRPFP.toFixed(2)} ( {percIRPFP}%)
           </span>
         </div>
       </div>

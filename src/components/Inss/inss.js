@@ -14,7 +14,7 @@ export default class inss extends Component {
         <div>
           <span>Desconto: </span>
           <span>
-            R${discountINSSP} ( {percINSSP}%)
+            R${discountINSSP.toFixed(2)} ( {percINSSP}%)
           </span>
         </div>
       </div>
