@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class IRPF extends Component {
   render() {
-    const { baseIRPFP, discountIRPFP } = this.props;
+    const { baseIRPFP, discountIRPFP, percIRPFP } = this.props;
     console.log(baseIRPFP + ' ' + discountIRPFP);
 
     return (
@@ -13,7 +13,9 @@ export default class IRPF extends Component {
         </div>
         <div>
           <span>Desconto: </span>
-          <span>R${discountIRPFP}</span>
+          <span>
+            R${discountIRPFP} ( {percIRPFP}%)
+          </span>
         </div>
       </div>
     );
